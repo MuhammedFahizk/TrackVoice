@@ -4,6 +4,7 @@ import { TopHeader } from "../Specific.jsx/Header/TopHeader";
 import SearchBar from "../Specific.jsx/Header/SearchBar";
 import ListMusics from "../Specific.jsx/Home/ListMusics";
 import { Outlet } from "react-router-dom";
+import RightDiv from "../Specific.jsx/Right/RightDiv";
 
 const Main = () => {
   return (
@@ -15,9 +16,7 @@ const Main = () => {
       </div>
     <Outlet/>
      </Div>
-     <Div className="col-span-1 bg-gradient-to-b from-bgSecondary to-bgblack p-4">
-
-     </Div>
+     <RightDiv/>
     </Div>
   );
 };

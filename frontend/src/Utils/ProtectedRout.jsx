@@ -1,24 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { Outlet, useNavigate, useLocation } from 'react-router-dom'; // Import useLocation
+import { Outlet, useNavigate } from 'react-router-dom';
 import { verifyUser } from '../api/getApi';
 import Home from '../pages/Home';
+import { useDispatch } from 'react-redux';
+import { message } from 'antd'; // Ant Design notification component
+import { setLikes } from '../Redux/audioSlice';
 
 const ProtectedRouteUser = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation(); // Get the current location object
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const checkToken = async () => {
       try {
-        const res = await verifyUser()
-        console.log('Verification response:', res);
+        const res = await verifyUser();
+        
+        // Assuming `res.likes` contains an array of liked song IDs
+        dispatch(setLikes(res.likes)); // Dispatch the liked songs to the Redux store
+        console.log('Verification response:', res.likes);
       } catch (error) {
         console.error('Error verifying user:', error);
-        console.error('Verification error:', error);
+        message.error('Verification failed. Redirecting to login...'); // Ant Design notification
         console.log('Redirecting to login due to error');
-        // toast.error(error.error.message)
-
         navigate('/login');
       } finally {
         setLoading(false);
@@ -26,15 +30,16 @@ const ProtectedRouteUser = () => {
     };
 
     checkToken();
-  }, [navigate, location.pathname]);
+  }, [dispatch, navigate]); // Removed `location.pathname` to avoid unnecessary re-renders
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p>Loading...</p>; // You can customize this loading message
   }
 
   return (
-      <Home />
-    
+    <>
+      <Home /> 
+    </>
   );
 };
 

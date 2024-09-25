@@ -7,10 +7,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#6B0000',      // Custom Primary Color
-        secondary: '#6B0000',    // Custom Secondary Color
+        primary: '#6B0000',      
+        secondary: '#6B0000',  
         ternary: '#520000',
-        button:'#631A1A',      // Custom Ternary Color
+        button:'#631A1A',      
         quaternary: '#CFC5C5', 
         bg: '#4B0000',
         bgblack: '#0A0A0A',

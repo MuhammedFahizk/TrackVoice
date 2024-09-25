@@ -7,6 +7,9 @@ import ProtectedRouteUser from './Utils/ProtectedRout';
 import ListMusics from './Specific.jsx/Home/ListMusics';
 import Categories from './pages/Categories';
 import PlayLists from './pages/PlayLists';
+import Like from './pages/Like';
+import Playlist from './pages/Playlist';
+import Friends from './pages/Friends';
 
 export const Routes = createBrowserRouter([ // Keep the named export
   {
@@ -24,6 +27,18 @@ export const Routes = createBrowserRouter([ // Keep the named export
       {
         path: "playlist/:playlistId", // Dynamic route for category selection
         element: <PlayLists />, // Component to display musics of selected category
+      },
+      {
+        path: "/likes",
+        element: <Like />,
+      },
+      {
+        path: "/playlists",
+        element: <Playlist />,
+      },
+      {
+        path: "/friends",
+        element: <Friends />,
       },
     ],
   },  

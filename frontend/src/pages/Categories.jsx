@@ -37,7 +37,7 @@ const Categories = () => {
     <Div>
       
       {playlists.length > 0 ? (
-        <Div className="playlists-list grid gap-2 p-5  grid-cols-4">
+        <Div className="playlists-list grid gap-2 p-5 h-[550px] overflow-y-auto  grid-cols-4">
           {playlists.map((playlist, index) => (
            <ListPlayLists key={index} playlist={playlist}/>
           ))}
