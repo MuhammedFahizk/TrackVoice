@@ -14,9 +14,9 @@ app.use(express.json());
 connectDB();
 
 app.use(cors({
-    origin: 'https://track-voice-gawe.vercel.app', 
-    credentials: true,
-  }));
+    origin: '*',  
+    credentials: true, 
+}));
   app.set('view engine', 'ejs');
 app.use(json());
 app.use(cookieParser()); // Use cookie-parser middleware
