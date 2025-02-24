@@ -14,7 +14,7 @@ app.use(express.json());
 connectDB();
 
 app.use(cors({
-    origin: '*',  
+    origin: 'https://track-voice.vercel.app'  
     credentials: true, 
 }));
   app.set('view engine', 'ejs');
