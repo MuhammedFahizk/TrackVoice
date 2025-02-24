@@ -14,7 +14,7 @@ app.use(express.json());
 connectDB();
 
 app.use(cors({
-    origin: 'http://localhost:5175', 
+    origin: 'https://track-voice-gawe.vercel.app', 
     credentials: true,
   }));
   app.set('view engine', 'ejs');
