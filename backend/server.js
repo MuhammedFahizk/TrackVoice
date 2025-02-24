@@ -13,10 +13,22 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 connectDB();
 
+const allowedOrigins = [
+    'https://track-voice.vercel.app',
+    'https://track-voice-git-master-fahiz-mavoors-projects.vercel.app'
+];
+
 app.use(cors({
-    origin: 'https://track-voice.vercel.app'  
-    credentials: true, 
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true); // Allow request
+        } else {
+            callback(new Error('Not allowed by CORS')); // Block request
+        }
+    },
+    credentials: true,
 }));
+
   app.set('view engine', 'ejs');
 app.use(json());
 app.use(cookieParser()); // Use cookie-parser middleware
